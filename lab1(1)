@@ -1,0 +1,33 @@
+from control.matlab import *
+import matplotlib.pyplot as plt
+
+
+num= [0., 1]
+den= [0., 0.000000000000001, 1]
+w= tf(num, den)
+
+y,x=step(w)
+plt.plot(x,y,"b")
+plt.title('Step Response ')
+plt.ylabel('Amplitude')
+plt.xlabel('Time(sec)')
+plt.grid(True)
+plt.show()
+
+z,c,g=bode(w)
+plt.plot(z,c,g)
+plt.title('Step Response ')
+plt.ylabel('Amplitude')
+plt.xlabel('Time(sec)')
+plt.grid(True)
+plt.show()
+#plt.savefig('plot2.png')
+print('Передаточная функция САУ : \n %s'%w)
+
+y,x=impulse(w)
+plt.plot(x,y,"b")
+plt.title('Step Response ')
+plt.ylabel('Amplitude')
+plt.xlabel('Time(sec)')
+plt.grid(True)
+plt.show()
